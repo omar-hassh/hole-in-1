@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Facilities - Hole in One</title>
+    <style>
+        :root {
+            --background-light: #f8f9fa;
+            --text-light: #333;
+            --header-light: #ffffff;
+            --primary-light: #2c3e50;
+            --accent-light: #e1b12c;
+            
+            --background-dark: #1a1a1a;
+            --text-dark: white;
+            --header-dark: #2e2b23;
+            --primary-dark: #34495e;
+            --accent-dark: #d4af37;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background-color: var(--header-light);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary-light);
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background: var(--accent-light);
+            color: black;
+            border-radius: 5px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .service {
+            background: var(--primary-light);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: center;
+        }
+        .service:hover {
+            transform: scale(1.05);
+        }
+        .service img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        .book-now {
+            background: var(--accent-light);
+            color: black;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .book-now:hover {
+            background: var(--accent-dark);
+            color: white;
+        }
+        footer {
+            text-align: center;
+            background: var(--primary-light);
+            color: white;
+            padding: 25px;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .theme-toggle, .cart {
+            position: fixed;
+            top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            width: 180px;
+            height: 45px;
+            text-align: center;
+            background: var(--accent-light);
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .theme-toggle:hover, .cart:hover {
+            background: var(--accent-dark);
+            color: white;
+        }
+        .cart-container {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary-light);
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            color: white;
+        }
+        .cart-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .cart-container li {
+            margin-bottom: 10px;
+        }
+        .remove-service {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <button class="cart" onclick="toggleCart()">🛒 Bookings</button>
+    
+    <div class="cart-container" id="cart-container">
+        <h3>Your Bookings</h3>
+        <ul id="cart-items"></ul>
+        <button onclick="closeCart()">Close</button>
+    </div>
+
+    <header>
+        <h1>Services & Facilities</h1>
+    </header>
+    
+    <nav>
+        <a href="home page.html">Home</a>
+        <a href="about us.html">About</a>
+        <a href="booking.html">Booking</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <section class="services-grid">
+        <div class="service">
+            <h3>🏌️‍♂️ Championship Golf Courses</h3>
+            <p>Enjoy world-class golfing experiences with breathtaking views.</p>
+            <img src="GOLF COURSE.jpg" alt="Golf Course">
+            <button class="book-now" onclick="bookService('Golf Course')">Book Now</button>
+        </div>
+        <div class="service">
+            <h3>🏨 Luxury Accommodations</h3>
+            <p>Stay in our five-star suites and villas for an unforgettable experience.</p>
+            <img src="luxury-accommodation.jpg" alt="Luxury Accommodations">
+            <button class="book-now" onclick="bookService('Luxury Accommodations')">Book Now</button>
+        </div>
+        <div class="service">
+            <h3>🍽️ Fine Dining</h3>
+            <p>Indulge in exquisite gourmet meals at our top-rated restaurants.</p>
+            <img src="fine din.jpg" alt="Fine Dining">
+            <button class="book-now" onclick="bookService('Fine Dining')">Book Now</button>
+        </div>
+        <div class="service">
+            <h3>🎯 Golf Training & Digital Coaching</h3>
+            <p>Improve your skills with professional golf training and digital analysis.</p>
+            <img src="golf training.jpg" alt="Golf Training">
+            <button class="book-now" onclick="bookService('Golf Training')">Book Now</button>
+        </div>
+        <div class="service">
+            <h3>🛍️ Pro Shop</h3>
+            <p>Find top-quality golf gear and apparel in our exclusive pro shop.</p>
+            <img src="pro shop.jpg" alt="Pro Shop">
+            <button class="book-now" onclick="bookService('Pro Shop')">Book Now</button>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Hole in One Golf Resort. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        let cart = [];
+
+        function bookService(service) {
+            cart.push(service);
+            updateCartDisplay();
+            alert(`You have booked the service: ${service}`);
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            cart.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                const removeButton = document.createElement("button");
+                removeButton.textContent = "Remove";
+                removeButton.classList.add("remove-service");
+                removeButton.onclick = () => removeService(index);
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+        }
+
+        function removeService(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function toggleCart() {
+            const cartContainer = document.getElementById("cart-container");
+            cartContainer.style.display = cartContainer.style.display === "none" || cartContainer.style.display === "" ? "block" : "none";
+        }
+
+        function closeCart() {
+            document.getElementById("cart-container").style.display = "none";
+        }
+
+        function toggleTheme() {
+            document.body.style.backgroundColor = document.body.style.backgroundColor === 'var(--background-light)' ? 'var(--background-dark)' : 'var(--background-light)';
+            document.body.style.color = document.body.style.color === 'var(--text-light)' ? 'var(--text-dark)' : 'var(--text-light)';
+        }
+    </script>
+</body>
+</html>

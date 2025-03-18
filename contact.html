@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Hole in One</title>
+    <style>
+         :root {
+            /* Light Theme */
+            --background-light: #ffffff;
+            --text-light: #000000;
+            --header-light: #000000;
+            --primary-light: #000000;
+            --accent-light: #000000;
+            --border-light: #ccc;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --nav-light: #ffffff;
+            --nav-text-light: #000000;
+            --button-text-light: #444;
+            --button-hover-light: #888;
+            /* Dark Theme */
+            --background-dark: #000000;
+            --text-dark: #ffffff;
+            --header-dark: #ffffff;
+            --primary-dark: #ffffff;
+            --accent-dark: #ffffff;
+            --border-dark: #666;
+            --shadow-dark: rgba(255, 255, 255, 0.1);
+            --nav-dark: #333333;
+            --nav-text-dark: #ffffff;
+            --button-text-dark: #aaa;
+            --button-hover-dark: #ccc;
+            --title-color-light: #ffffff;
+            --title-color-dark: #000000;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        header {
+            background-color: var(--header-light);
+            color: var(--title-color-light);
+            /* Apply dynamic title color */
+            text-align: center;
+            padding: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--nav-light);
+            padding: 15px;
+        }
+        
+        nav a {
+            color: var(--nav-text-light);
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: var(--background-light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px var(--shadow-light);
+            border: 1px solid var(--border-light);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info div {
+            width: 30%;
+        }
+        
+        .contact-info div h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info div p {
+            text-align: center;
+        }
+        
+        form input,
+        form textarea,
+        form button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid var(--border-light);
+        }
+        
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        
+        button {
+            background: var(--accent-light);
+            color: var(--button-text-light);
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: var(--primary-light);
+            color: var(--button-text-light);
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            width: auto;
+            text-align: center;
+            box-shadow: 0px 4px 8px var(--shadow-light);
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--button-hover-light);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-title">Contact Us</header>
+
+    <nav>
+        <a href="home page.html">Home</a>
+        <a href="about us.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="shop.html">Shop</a>
+        <a href="booking.html">Bookings</a>
+    </nav>
+
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+
+    <div class="container">
+        <h2>Get in Touch</h2>
+
+        <div class="contact-info">
+            <div>
+                <h3>Email</h3>
+                <p>holeinoneofficial1@gmail.com</p>
+            </div>
+            <div>
+                <h3>Phone</h3>
+                <p>0790770203</p>
+            </div>
+            <div>
+                <h3>Location</h3>
+                <p>Ruadireta, Obidos, Portugal</p>
+            </div>
+        </div>
+
+        <h3>Send Us a Message</h3>
+        <form id="contact-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" placeholder="Write your message here" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="social-links">
+            <h3>Follow Us</h3>
+            <p><a href="https://www.instagram.com/holeinone" target="_blank">Instagram</a></p>
+            <p><a href="https://www.google.com/maps/dir//Pra%C3%A7a+de+Santa+Maria,+2510-001+%C3%93bidos,+Portugal/@39.3631165,-9.2313421,12.17z/data=!4m8!4m7!1m0!1m5!1m1!1s0xd18b49018e674ab:0x26828caf2c65320c!2m2!1d-9.1568821!2d39.3619727?hl=en&entry=ttu&g_ep=EgoyMDI1MDMwNC4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank">Our Location on Google Maps</a></p>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("wYqEthQSekOolQx20"); // استبدل YOUR_PUBLIC_KEY بمفتاحك العام
+        })();
+
+        function toggleTheme() {
+            let root = document.documentElement;
+            let currentTheme = getComputedStyle(root).getPropertyValue('--background-light').trim();
+            if (currentTheme === '#ffffff') {
+                root.style.setProperty('--background-light', '#000000');
+                root.style.setProperty('--text-light', '#ffffff');
+                root.style.setProperty('--header-light', '#ffffff');
+                root.style.setProperty('--primary-light', '#ffffff');
+                root.style.setProperty('--accent-light', '#ffffff');
+                root.style.setProperty('--border-light', '#666');
+                root.style.setProperty('--shadow-light', 'rgba(255, 255, 255, 0.1)');
+                root.style.setProperty('--nav-light', '#333333');
+                root.style.setProperty('--nav-text-light', '#ffffff');
+                root.style.setProperty('--button-text-light', '#aaa');
+                root.style.setProperty('--button-hover-light', '#ccc');
+                root.style.setProperty('--title-color-light', '#000000'); // Title color for dark theme
+            } else {
+                root.style.setProperty('--background-light', '#ffffff');
+                root.style.setProperty('--text-light', '#000000');
+                root.style.setProperty('--header-light', '#000000');
+                root.style.setProperty('--primary-light', '#000000');
+                root.style.setProperty('--accent-light', '#000000');
+                root.style.setProperty('--border-light', '#ccc');
+                root.style.setProperty('--shadow-light', 'rgba(0, 0, 0, 0.1)');
+                root.style.setProperty('--nav-light', '#ffffff');
+                root.style.setProperty('--nav-text-light', '#000000');
+                root.style.setProperty('--button-text-light', '#444');
+                root.style.setProperty('--button-hover-light', '#888');
+                root.style.setProperty('--title-color-light', '#ffffff'); // Title color for light theme
+            }
+        }
+
+        document.getElementById("contact-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+
+            emailjs.send("service_wvxrux2", "template_ucgyva6", formData)
+                .then(function(response) {
+                    alert('Message sent successfully!');
+                }, function(error) {
+                    alert('Failed to send message: ' + error.text);
+                });
+        });
+    </script>
+</body>
+
+</html>

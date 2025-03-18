@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Hole in One</title>
+    <style>
+        :root {
+            --background-light: #f4f7f6;
+            --text-light: #2c3e50;
+            --header-light: #3498db;
+            --primary-light: #2c3e50;
+            --accent-light: #e67e22;
+            
+            --background-dark: #2c3e50;
+            --text-dark: #ecf0f1;
+            --header-dark: #34495e;
+            --primary-dark: #1abc9c;
+            --accent-dark: #f39c12;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-light);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary-light);
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--accent-light);
+            border-radius: 5px;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: var(--accent-light);
+        }
+
+        .cart {
+            position: fixed;
+            top: 70px;
+            left: 20px;
+            padding: 10px;
+            background: var(--accent-light);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .cart:hover {
+            background: #f39c12;
+        }
+
+        .shop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h3 {
+            margin: 15px 0;
+            font-size: 22px;
+            color: var(--primary-light);
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--accent-light);
+        }
+
+        .add-to-cart {
+            background: var(--accent-light);
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #e67e22;
+        }
+
+        .cart-container {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background: var(--header-light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            display: none;
+        }
+
+        .cart-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart-container ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .remove-item {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: var(--primary-light);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>Hole in One - Shop</header>
+    
+    <nav>
+        <a href="home page.html">Home</a>
+        <a href="about us.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="booking.html">Bookings</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    <button class="cart" onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
+    
+    <div class="cart-container" id="cart-container">
+        <h3>Your Cart</h3>
+        <ul id="cart-items"></ul>
+        <button onclick="closeCart()">Close</button>
+    </div>
+    
+    <div class="shop-container">
+        <div class="product-card"><img src="golfclub.jpg" alt="Golf Club"><h3>Premium Golf Club</h3><p class="price">$199.99</p><button class="add-to-cart" onclick="addToCart('Premium Golf Club', 199.99)">Add to Cart</button></div>
+        <div class="product-card"><img src="bag.jpg" alt="Golf Bag"><h3>Luxury Golf Bag</h3><p class="price">$249.99</p><button class="add-to-cart" onclick="addToCart('Luxury Golf Bag', 249.99)">Add to Cart</button></div>
+        <div class="product-card"><img src="glov.jpg" alt="Golf Glove"><h3>Leather Golf Glove</h3><p class="price">$29.99</p><button class="add-to-cart" onclick="addToCart('Leather Golf Glove', 29.99)">Add to Cart</button></div>
+        <div class="product-card"><img src="shoes.webp" alt="Golf Shoes"><h3>Professional Golf Shoes</h3><p class="price">$129.99</p><button class="add-to-cart" onclick="addToCart('Golf Shoes', 129.99)">Add to Cart</button></div>
+        <div class="product-card"><img src="cap.jpg" alt="Golf Hat"><h3>Golf Cap</h3><p class="price">$19.99</p><button class="add-to-cart" onclick="addToCart('Golf Cap', 19.99)">Add to Cart</button></div>
+        <div class="product-card"><img src="balls.webp" alt="Golf Balls"><h3>Pro Golf Balls (Pack of 12)</h3><p class="price">$49.99</p><button class="add-to-cart" onclick="addToCart('Golf Balls', 49.99)">Add to Cart</button></div>
+    </div>
+    
+    <footer>&copy; 2025 Hole in One Golf Shop. All Rights Reserved.</footer>
+    
+    <script>
+        let cart = [];
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            document.getElementById("cart-count").textContent = cart.length;
+            updateCart();
+            alert(item + " added to cart!");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById("cart-count").textContent = cart.length;
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = '';  
+            cart.forEach((cartItem, index) => {
+                const li = document.createElement("li");
+                li.innerHTML = `${cartItem.item} - $${cartItem.price} <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>`;
+                cartItems.appendChild(li);
+            });
+        }
+
+        function toggleCart() {
+            let cartContainer = document.getElementById("cart-container");
+            cartContainer.style.display = (cartContainer.style.display === "none" || cartContainer.style.display === "") ? "block" : "none";
+        }
+
+        function closeCart() {
+            document.getElementById("cart-container").style.display = "none";
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            const buttons = document.querySelectorAll('.theme-toggle, .cart');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            body.classList.toggle('dark-theme');
+            header.classList.toggle('dark-theme');
+            nav.classList.toggle('dark-theme');
+            buttons.forEach(button => button.classList.toggle('dark-theme'));
+            productCards.forEach(card => card.classList.toggle('dark-theme'));
+            
+            // Update text color based on theme
+            if (body.classList.contains('dark-theme')) {
+                body.style.backgroundColor = 'var(--background-dark)';
+                body.style.color = 'var(--text-dark)';
+                header.style.backgroundColor = 'var(--header-dark)';
+                nav.style.backgroundColor = 'var(--primary-dark)';
+                footer.style.backgroundColor = 'var(--header-dark)';
+                document.querySelectorAll('.price').forEach(price => price.style.color = 'var(--accent-dark)');
+            } else {
+                body.style.backgroundColor = 'var(--background-light)';
+                body.style.color = 'var(--text-light)';
+                header.style.backgroundColor = 'var(--header-light)';
+                nav.style.backgroundColor = 'var(--primary-light)';
+                footer.style.backgroundColor = 'var(--primary-light)';
+                document.querySelectorAll('.price').forEach(price => price.style.color = 'var(--accent-light)');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hole in One - Home</title>
+    <style>
+        :root {
+            --background-light: #f8f9fa;
+            --text-light: #333;
+            --header-light: #ffffff;
+            --primary-light: #2c3e50;
+            --accent-light: #e1b12c;
+            
+            --background-dark: #1a1a1a;
+            --text-dark: white;
+            --header-dark: #2e2b23;
+            --primary-dark: #34495e;
+            --accent-dark: #d4af37;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background-color: var(--header-light);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary-light);
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            background: var(--accent-light);
+            color: black;
+            border-radius: 5px;
+        }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: var(--primary-light);
+            color: white;
+        }
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: var(--header-light);
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+        }
+        .image-gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .btn {
+            background: var(--accent-light);
+            color: black;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+        footer {
+            text-align: center;
+            background: var(--primary-light);
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Media Query for mobile devices */
+        @media (max-width: 768px) {
+            header {
+                font-size: 20px; /* Smaller header size */
+                padding: 15px;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center; /* Stack links vertically on smaller screens */
+            }
+            .hero {
+                padding: 60px 20px; /* Adjust padding for smaller screens */
+                font-size: 20px; /* Smaller text for hero section */
+            }
+            .container {
+                width: 90%; /* Make container take up 90% width on small screens */
+                padding: 20px;
+            }
+            .image-gallery img {
+                width: 150px; /* Smaller images on mobile */
+            }
+            .btn {
+                width: 100%; /* Full-width button */
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <header>
+        <h1>Hole in One Golf Resort</h1>
+    </header>
+    
+    <nav>
+        <a href="about us.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="booking.html">Booking</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <section class="hero">
+        <h2>Experience Luxury Golf Like Never Before</h2>
+        <p>Book your stay now and enjoy world-class golf courses.</p>
+        <a href="#booking" class="btn">Book Now</a>
+    </section>
+    
+    <section class="container" id="about">
+        <h2>About Hole in One</h2>
+        <p>Welcome to Portugal's most exclusive golf resort, offering top-tier facilities and breathtaking landscapes.</p>
+        <div class="image-gallery">
+            <img src="GOLF COURSE.webp" alt="Golf Course">
+            <img src="vila.avif" alt="Luxury Villa">
+            <img src="resort.webp" alt="Resort View">
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Hole in One Golf Resort. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        function toggleTheme() {
+            let root = document.documentElement;
+            let currentTheme = getComputedStyle(root).getPropertyValue('--background-light').trim();
+            
+            if (currentTheme === '#f8f9fa') {
+                root.style.setProperty('--background-light', '#1a1a1a');
+                root.style.setProperty('--text-light', 'white');
+                root.style.setProperty('--header-light', '#2e2b23');
+                root.style.setProperty('--primary-light', '#34495e');
+                root.style.setProperty('--accent-light', '#d4af37');
+            } else {
+                root.style.setProperty('--background-light', '#f8f9fa');
+                root.style.setProperty('--text-light', '#333');
+                root.style.setProperty('--header-light', '#ffffff');
+                root.style.setProperty('--primary-light', '#2c3e50');
+                root.style.setProperty('--accent-light', '#e1b12c');
+            }
+        }
+    </script>
+</body>
+</html>

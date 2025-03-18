@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Hole in One</title>
+    <style>
+        :root {
+            --background-light: #f8f9fa;
+            --text-light: #333;
+            --header-light: #ffffff;
+            --primary-light: #2c3e50;
+            --accent-light: #e1b12c;
+            
+            --background-dark: #1a1a1a;
+            --text-dark: white;
+            --header-dark: #2e2b23;
+            --primary-dark: #34495e;
+            --accent-dark: #d4af37;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background-color: var(--header-light);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary-light);
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background: var(--accent-light);
+            color: black;
+            border-radius: 5px;
+        }
+        .container {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: var(--header-light);
+            border-radius: 12px;
+            margin: 40px auto;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .image-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .image-gallery img {
+            width: 250px;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            background: var(--primary-light);
+            color: white;
+            padding: 25px;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 12px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background: var(--accent-light);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <header>
+        <h1>About Hole in One</h1>
+    </header>
+    
+    <nav>
+        <a href="home page.html">Home</a>
+        <a href="service.html">Services</a>
+        <a href="booking.html">Booking</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <section class="container">
+        <h2>Welcome to Hole in One</h2>
+        <p style="font-size: 18px; line-height: 1.6;">Nestled in the breathtaking landscapes of Portugal, Hole in One Golf Resort offers an unparalleled luxury experience. Our resort is designed for golf enthusiasts and travelers seeking relaxation and exclusivity.</p>
+        <div class="image-gallery">
+            <img src="خريطة المكان.avif" alt="Resort Overview">
+            <img src="GOLF COURSE11.jpg" alt="Golf Course View">
+            <img src="luxury-accommodation.jpg" alt="Luxury Accommodations">
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Hole in One Golf Resort. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        function toggleTheme() {
+            let root = document.documentElement;
+            let currentTheme = getComputedStyle(root).getPropertyValue('--background-light').trim();
+            
+            if (currentTheme === '#f8f9fa') {
+                root.style.setProperty('--background-light', '#1a1a1a');
+                root.style.setProperty('--text-light', 'white');
+                root.style.setProperty('--header-light', '#2e2b23');
+                root.style.setProperty('--primary-light', '#34495e');
+                root.style.setProperty('--accent-light', '#d4af37');
+            } else {
+                root.style.setProperty('--background-light', '#f8f9fa');
+                root.style.setProperty('--text-light', '#333');
+                root.style.setProperty('--header-light', '#ffffff');
+                root.style.setProperty('--primary-light', '#2c3e50');
+                root.style.setProperty('--accent-light', '#e1b12c');
+            }
+        }
+    </script>
+</body>
+</html>

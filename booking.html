@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings - Hole in One</title>
+    <style>
+        /* نفس التنسيق السابق */
+        :root {
+            --background-light: #f4f4f4;
+            --text-light: #333;
+            --header-light: #d4af37;
+            --primary-light: #2c3e50;
+            --accent-light: #e1b12c;
+            
+            --background-dark: #1a1a1a;
+            --text-dark: white;
+            --header-dark: #2e2b23;
+            --primary-dark: #34495e;
+            --accent-dark: #d4af37;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-light);
+            color: black;
+            transition: background 0.3s, color 0.3s;
+        }
+        header {
+            background-color: var(--header-light);
+            color: black;
+            text-align: center;
+            padding: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: var(--primary-light);
+            padding: 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        nav a:hover {
+            background-color: #e1b12c;
+        }
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .package {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .package:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .package img {
+            width: 150px;
+            height: 100px;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+        .details {
+            flex: 1;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: var(--accent-light);
+            color: black;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+        }
+        button:hover {
+            background: #e1a62b;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: var(--primary-light);
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 14px;
+            width: auto;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .theme-toggle:hover {
+            background: #e1b12c;
+        }
+
+        /* نافذة الدفع المنبثقة */
+        .modal {
+            display: none; /* مخفية في البداية */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .modal-content h3 {
+            margin-bottom: 20px;
+        }
+        .modal-content input {
+            margin-bottom: 15px;
+        }
+        .modal button {
+            background: var(--accent-light);
+            color: black;
+            padding: 10px;
+            width: 100%;
+        }
+        .modal button:hover {
+            background: #e1a62b;
+        }
+    </style>
+</head>
+<body>
+    <header>Bookings</header>
+    
+    <nav>
+        <a href="home page.html">Home</a>
+        <a href="about us.html">About</a>
+        <a href="service.html">Services</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    
+    <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
+    
+    <div class="container">
+        <h2>Choose Your Package</h2>
+        
+        <div class="package">
+            <img src="opl.jpg" alt="Full Stay Package">
+            <div class="details">
+                <h3>Full Stay (5 Nights, 5 Rounds)</h3>
+                <p>Enjoy a luxurious stay with full golf access, premium accommodations, and fine dining.</p>
+            </div>
+        </div>
+        
+        <div class="package">
+            <img src="trii.webp" alt="Triple Tee Package">
+            <div class="details">
+                <h3>Triple Tee (2 Nights, 3 Rounds)</h3>
+                <p>Perfect for a short getaway, including three rounds of golf and relaxing amenities.</p>
+            </div>
+        </div>
+        
+        <div class="package">
+            <img src="rela.avif" alt="Relaxation Break">
+            <div class="details">
+                <h3>Relaxation Break (1 Night, 1 Round)</h3>
+                <p>Unwind with a one-night stay, a fine dining experience, and a single round of golf.</p>
+            </div>
+        </div>
+        
+        <h3>Select Your Booking Details</h3>
+        <label for="date">Select Date:</label>
+        <input type="date" id="date">
+        
+        <label for="session">Choose a Package:</label>
+        <select id="session">
+            <option value="full-stay">Full Stay</option>
+            <option value="triple-tee">Triple Tee</option>
+            <option value="relaxation">Relaxation Break</option>
+        </select>
+        
+        <h3>Payment Method</h3>
+        <select id="payment">
+            <option value="credit-card">Credit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="bank-transfer">Bank Transfer</option>
+        </select>
+        
+        <button onclick="bookSession()">Confirm Booking</button>
+    </div>
+    
+    <!-- نافذة الدفع المنبثقة -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <h3>Enter Payment Details</h3>
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" placeholder="Enter Card Number">
+            
+            <label for="expiry-date">Expiry Date:</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY">
+            
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" placeholder="Enter CVV">
+            
+            <button onclick="completePayment()">Pay Now</button>
+        </div>
+    </div>
+
+    <script>
+        function bookSession() {
+            let date = document.getElementById("date").value;
+            let session = document.getElementById("session").value;
+            let payment = document.getElementById("payment").value;
+            
+            if (date === "") {
+                alert("Please select a date for your booking.");
+                return;
+            }
+
+            // عرض نافذة الدفع بعد تأكيد الحجز
+            document.getElementById("paymentModal").style.display = "flex";
+        }
+        
+        function completePayment() {
+            let cardNumber = document.getElementById("card-number").value;
+            let expiryDate = document.getElementById("expiry-date").value;
+            let cvv = document.getElementById("cvv").value;
+
+            if (cardNumber === "" || expiryDate === "" || cvv === "") {
+                alert("Please fill in all payment details.");
+                return;
+            }
+
+            alert("Payment successful! Returning to the main page...");
+            // إغلاق نافذة الدفع بعد إتمام الدفع
+            document.getElementById("paymentModal").style.display = "none";
+            // يمكنك إضافة أي إجراءات إضافية هنا مثل إعادة تحميل الصفحة أو إعادة التوجيه
+        }
+
+        function toggleTheme() {
+            let root = document.documentElement;
+            let currentTheme = getComputedStyle(root).getPropertyValue('--background-light').trim();
+            if (currentTheme === '#f4f4f4') {
+                root.style.setProperty('--background-light', '#1a1a1a');
+                root.style.setProperty('--text-light', 'white');
+                root.style.setProperty('--header-light', '#2e2b23');
+            } else {
+                root.style.setProperty('--background-light', '#f4f4f4');
+                root.style.setProperty('--text-light', '#333');
+                root.style.setProperty('--header-light', '#d4af37');
+            }
+        }
+    </script>
+</body>
+</html>
